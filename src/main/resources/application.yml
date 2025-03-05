@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    username: postgres
+    password: haythem
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/psy_project
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+application:
+  security:
+    jwt:
+      secret-key: 91meaCW+8lFIvxbZNgTDpe/mV8O0Kjd0YYgAkB+mgHU=
+      expiration: 604800000 # 1 minute 604800000 60000
+      refresh-token:
+        expiration: 604800000 # 7 days
+server:
+  port: 7090
