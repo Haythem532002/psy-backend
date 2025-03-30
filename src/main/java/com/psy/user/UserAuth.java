@@ -17,15 +17,15 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "_user")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @SuperBuilder
+@Inheritance(strategy = InheritanceType.JOINED)
 @EntityListeners(AuditingEntityListener.class)
-public class User implements Principal, UserDetails {
+public class UserAuth implements Principal, UserDetails {
     @Id
     @GeneratedValue
     Integer id;

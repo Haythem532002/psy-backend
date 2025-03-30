@@ -5,8 +5,9 @@ import com.psy.security.JwtService;
 import com.psy.token.Token;
 import com.psy.token.TokenRepository;
 import com.psy.user.RoleEnum;
-import com.psy.user.User;
+import com.psy.user.UserAuth;
 import com.psy.user.UserRepository;
+import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import io.jsonwebtoken.Claims;
+
 import java.util.HashMap;
 
 import static com.psy.token.TokenType.BEARER;
@@ -34,7 +35,7 @@ public class AuthenticationService {
     private final UserDetailsService userDetailsService;
 
     public Integer register(RegistrationRequest request) {
-        var user = User.builder()
+        var user = UserAuth.builder()
                 .firstname(request.getFirstName())
                 .lastname(request.getLastName())
                 .email(request.getEmail())
@@ -54,7 +55,7 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
-        var user = (User) auth.getPrincipal();
+        var user = (UserAuth) auth.getPrincipal();
         var claims = new HashMap<String, Object>();
         // generate a jwt access-token and refresh-token
         String token = jwtService.generateToken(claims, user);
@@ -89,7 +90,6 @@ public class AuthenticationService {
         }
         return false;
     }
-
 
 
     public AuthenticationResponse refresh(RefreshRequest request) {

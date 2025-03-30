@@ -5,10 +5,7 @@ import com.psy.services.DoctorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/doctor")
@@ -20,6 +17,13 @@ public class DoctorController {
     @GetMapping("/all")
     Page<Doctor> getAllDoctors(@RequestParam int page, @RequestParam int size) {
         return doctorService.getAllDoctors(page,size);
+    }
+
+    @GetMapping("/{id}")
+    ResponseEntity<Doctor> getDoctorById(
+            @PathVariable("id") Integer id
+    ) {
+        return ResponseEntity.ok(doctorService.getDoctorById(id));
     }
 
     @GetMapping("/count")

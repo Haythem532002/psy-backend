@@ -15,11 +15,17 @@ public class DoctorService {
     private final DoctorRepository doctorRepository;
 
     public Page<Doctor> getAllDoctors(int page, int size) {
-        Pageable pageable = PageRequest.of(page,size);
+        Pageable pageable = PageRequest.of(page, size);
         return doctorRepository.findAll(pageable);
     }
 
     public Integer getDoctorCount() {
         return Math.toIntExact(doctorRepository.count());
+    }
+
+    public Doctor getDoctorById(Integer id) {
+        return doctorRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("Doctor not found")
+        );
     }
 }

@@ -9,7 +9,8 @@ import lombok.experimental.FieldDefaults;
 import static lombok.AccessLevel.PRIVATE;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -27,6 +28,7 @@ public class Doctor {
     String address;
     String city;
     String gender;
+    String education;
     int experienceYears;
     int price;
     String title;

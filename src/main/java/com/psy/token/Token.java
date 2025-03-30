@@ -1,6 +1,6 @@
 package com.psy.token;
 
-import com.psy.user.User;
+import com.psy.user.UserAuth;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -24,5 +24,5 @@ public class Token {
     TokenType tokenType;
 
     @ManyToOne
-    User user;
+    UserAuth user;
 }
