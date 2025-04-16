@@ -1,9 +1,6 @@
 package com.psy.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -24,6 +21,8 @@ public class Appointment {
     private User user;
 
     LocalDateTime date;
+    @Enumerated(EnumType.STRING)
+    AppointmentType type;
 
     @ManyToOne
     Doctor doctor;

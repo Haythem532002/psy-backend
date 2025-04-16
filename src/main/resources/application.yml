@@ -22,3 +22,7 @@ application:
         expiration: 604800000  # 7 days
 server:
   port: 7090
+
+stripe:
+  secret:
+    key: sk_test_51RDvoFGahA2Me4aUxXSy1Oxswtsk3pyb0GMZjoMU1f5XKCvn7cCh0EmE4KDXT7ZIlvnoz2a4wJBORcWilZq6et8g00qMgNlnWe
