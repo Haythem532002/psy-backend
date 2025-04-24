@@ -1,5 +1,6 @@
 package com.psy.models;
 
+import com.psy.user.UserAuth;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -18,7 +19,7 @@ public class Appointment {
     @GeneratedValue
     Integer id;
     @ManyToOne
-    private User user;
+    private UserAuth user;
 
     LocalDateTime date;
     @Enumerated(EnumType.STRING)

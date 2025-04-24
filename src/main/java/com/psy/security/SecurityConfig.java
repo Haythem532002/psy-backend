@@ -36,6 +36,7 @@ public class SecurityConfig {
                     req
                             .requestMatchers("/auth/**")
                             .permitAll()
+                            .requestMatchers("/api/stripe/webhook").permitAll()
                             .anyRequest()
                             .authenticated();
                 })

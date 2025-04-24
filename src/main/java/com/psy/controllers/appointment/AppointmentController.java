@@ -1,4 +1,4 @@
-package com.psy.controllers;
+package com.psy.controllers.appointment;
 
 import com.psy.models.Appointment;
 import com.psy.services.AppointmentService;
