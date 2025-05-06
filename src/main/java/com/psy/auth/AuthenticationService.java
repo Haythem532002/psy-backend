@@ -1,12 +1,14 @@
 package com.psy.auth;
 
 
+import com.psy.models.User;
+import com.psy.repositories.UserRepository;
 import com.psy.security.JwtService;
 import com.psy.token.Token;
 import com.psy.token.TokenRepository;
 import com.psy.user.RoleEnum;
 import com.psy.user.UserAuth;
-import com.psy.user.UserRepository;
+import com.psy.user.UserAuthRepository;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,14 +30,15 @@ import static com.psy.token.TokenType.BEARER;
 @Slf4j
 public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
-    private final UserRepository userRepository;
+    private final UserAuthRepository userAuthRepository;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
     private final TokenRepository tokenRepository;
     private final UserDetailsService userDetailsService;
+    private final UserRepository userRepository;
 
     public Integer register(RegistrationRequest request) {
-        var user = UserAuth.builder()
+        User user = User.builder()
                 .firstname(request.getFirstName())
                 .lastname(request.getLastName())
                 .email(request.getEmail())
@@ -43,7 +46,8 @@ public class AuthenticationService {
                 .role(RoleEnum.USER)
                 .enabled(true)
                 .locked(false)
-                .build();
+                .build()
+                ;
         return userRepository.save(user).getId();
     }
 

@@ -1,10 +1,6 @@
 package com.psy.config;
 
-import com.github.javafaker.Faker;
-import com.psy.models.Doctor;
-import com.psy.repositories.DoctorRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
@@ -21,8 +17,6 @@ import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
-import java.util.stream.IntStream;
 
 import static org.springframework.http.HttpHeaders.*;
 
@@ -30,6 +24,7 @@ import static org.springframework.http.HttpHeaders.*;
 @RequiredArgsConstructor
 public class BeansConfig {
     private final UserDetailsService userDetailsService;
+
     @Bean
     AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
         return authConfig.getAuthenticationManager();

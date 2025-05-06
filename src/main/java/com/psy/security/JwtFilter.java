@@ -32,16 +32,19 @@ public class JwtFilter extends OncePerRequestFilter {
             @NonNull HttpServletResponse response,
             @NonNull FilterChain filterChain
     ) throws ServletException, IOException {
+        String path = request.getServletPath();
 
-        if (request.getServletPath().startsWith("/auth")) {
+        if (path.startsWith("/auth") ||
+                path.startsWith("/api/stripe/webhook") ||
+                path.startsWith("/v3/api-docs") ||
+                path.startsWith("/swagger-ui") ||
+                path.startsWith("/swagger-resources") ||
+                path.startsWith("/webjars") ||
+                path.equals("/swagger-ui.html")) {
+
             filterChain.doFilter(request, response);
             return;
         }
-        if (request.getServletPath().startsWith("/api/stripe/webhook")) {
-            filterChain.doFilter(request, response);
-            return;
-        }
-
         final String authHeader = request.getHeader("Authorization");
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);

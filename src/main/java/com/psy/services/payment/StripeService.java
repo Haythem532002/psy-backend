@@ -18,9 +18,6 @@ public class StripeService {
 
     public PaymentResponse createPaymentLink(AppointmentRequest appointmentRequest) throws StripeException {
         Stripe.apiKey = stripeSecretKey;
-        log.info(String.valueOf("price"+appointmentRequest.getPrice()));
-        log.info(String.valueOf("type"+appointmentRequest.getAppointmentType()));
-        log.info(String.valueOf("doctor id"+appointmentRequest.getDoctorId()));
         SessionCreateParams params = SessionCreateParams.builder()
                 .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
                 .setMode(SessionCreateParams.Mode.PAYMENT)
@@ -28,7 +25,7 @@ public class StripeService {
                 .putMetadata("doctorId", String.valueOf(appointmentRequest.getDoctorId()))
                 .putMetadata("type", appointmentRequest.getAppointmentType())
                 .putMetadata("date", appointmentRequest.getAppointmentDateTime())
-                .setSuccessUrl("http://localhost:4200/payment/success")
+                .setSuccessUrl("http://localhost:4200/home/appointments")
                 .setCancelUrl("http://localhost:4200/payment/fail")
                 .addLineItem(
                         SessionCreateParams.LineItem.builder()

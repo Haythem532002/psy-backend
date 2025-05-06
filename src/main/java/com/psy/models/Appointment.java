@@ -19,7 +19,7 @@ public class Appointment {
     @GeneratedValue
     Integer id;
     @ManyToOne
-    private UserAuth user;
+    User user;
 
     LocalDateTime date;
     @Enumerated(EnumType.STRING)
@@ -27,5 +27,8 @@ public class Appointment {
 
     @ManyToOne
     Doctor doctor;
+
+    @OneToOne
+    Payment payment;
 
 }
