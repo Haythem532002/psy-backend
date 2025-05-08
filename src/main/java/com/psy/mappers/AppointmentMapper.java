@@ -11,7 +11,8 @@ public class AppointmentMapper {
         return new AppointmentDto(
                 appointment.getId(),
                 appointment.getDate(),
-                appointment.getDoctor()
+                appointment.getDoctor(),
+                appointment.getType()
         );
     }
 }

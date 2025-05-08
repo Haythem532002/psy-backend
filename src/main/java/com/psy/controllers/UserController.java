@@ -2,6 +2,7 @@ package com.psy.controllers;
 
 import com.psy.dtos.appointmentDto.AppointmentDto;
 import com.psy.models.Appointment;
+import com.psy.models.User;
 import com.psy.services.UserAuthService;
 import com.psy.services.UserService;
 import com.psy.services.payment.PaymentHistoryResponse;
@@ -21,6 +22,18 @@ public class UserController {
     @GetMapping("/email")
     public ResponseEntity<Integer> getUserIdByEmail(@RequestParam String email) {
         return ResponseEntity.ok(userAuthService.getUserIdByEmail(email));
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@RequestParam Integer id) {
+        return ResponseEntity.ok(userService.getUser(id));
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<User> updateUser(
+            @PathVariable("id") Integer id,
+            @RequestBody User user
+    ) {
+        return ResponseEntity.ok(userService.createOrUpdateUser(user));
     }
 
     @GetMapping("/appointments/{id}")

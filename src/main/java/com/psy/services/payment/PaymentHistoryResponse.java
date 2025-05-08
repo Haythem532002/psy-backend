@@ -7,6 +7,7 @@ public record PaymentHistoryResponse(
         LocalDateTime paymentDate,
         LocalDateTime appointmentDate,
         String doctorName,
-        String appointmentType
+        String appointmentType,
+        int price
 ) {
 }

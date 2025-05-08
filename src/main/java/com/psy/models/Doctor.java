@@ -31,6 +31,7 @@ public class Doctor {
     String education;
     int experienceYears;
     int price;
-    String title;
+    String specialization;
     String description;
+    int rating = 0;
 }

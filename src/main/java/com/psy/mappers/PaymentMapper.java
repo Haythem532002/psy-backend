@@ -14,12 +14,14 @@ public class PaymentMapper {
         var appointmentDate = appointment.getDate();
         var paymentDate = appointment.getPayment().getDateTime();
         var appointmentType = appointment.getType().name();
+        int price = appointment.getDoctor().getPrice();
         return new PaymentHistoryResponse(
                 appointment.getPayment().getId(),
                 paymentDate,
                 appointmentDate,
                 doctorName,
-                appointmentType
+                appointmentType,
+                price
         );
     }
 }

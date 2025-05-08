@@ -1,5 +1,6 @@
 package com.psy.dtos.appointmentDto;
 
+import com.psy.models.AppointmentType;
 import com.psy.models.Doctor;
 
 import java.time.LocalDateTime;
@@ -7,6 +8,7 @@ import java.time.LocalDateTime;
 public record AppointmentDto(
         Integer id,
         LocalDateTime dateTime,
-        Doctor doctor
+        Doctor doctor,
+        AppointmentType appointmentType
 ) {
 }

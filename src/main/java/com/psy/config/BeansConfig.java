@@ -1,6 +1,10 @@
 package com.psy.config;
 
+import com.github.javafaker.Faker;
+import com.psy.models.Doctor;
+import com.psy.repositories.DoctorRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
@@ -17,6 +21,9 @@ import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.springframework.http.HttpHeaders.*;
 
@@ -67,10 +74,19 @@ public class BeansConfig {
 //        return args -> {
 //            Faker faker = new Faker();
 //
+//            List<String> specializations = Arrays.asList(
+//                    "General Psychiatrist",
+//                    "Child and Adolescent Psychiatrist",
+//                    "Adult Psychiatrist",
+//                    "Geriatric Psychiatrist",
+//                    "Addiction Psychiatrist",
+//                    "Forensic Psychiatrist ",
+//                    "Neuropsychiatrist "
+//            );
+//
 //            List<Doctor> doctors = IntStream.range(0, 100)
 //                    .mapToObj(i ->
-//                            Doctor
-//                                    .builder()
+//                            Doctor.builder()
 //                                    .firstname(faker.name().firstName())
 //                                    .lastname(faker.name().lastName())
 //                                    .phone(faker.phoneNumber().phoneNumber())
@@ -78,17 +94,21 @@ public class BeansConfig {
 //                                    .address(faker.address().fullAddress())
 //                                    .city(faker.address().city())
 //                                    .gender(faker.demographic().sex())
+//                                    .education(faker.educator().university())
 //                                    .experienceYears(faker.number().numberBetween(1, 40))
 //                                    .price(faker.number().numberBetween(60, 120))
-//                                    .title(faker.job().title())
+//                                    .specialization(faker.options().nextElement(specializations))
 //                                    .description(faker.lorem().sentence())
+//                                    .rating(faker.number().numberBetween(1, 6))
 //                                    .build()
 //                    )
-//                    .toList();
+//                    .collect(Collectors.toList());
 //
 //            doctorRepository.saveAll(doctors);
 //
 //            System.out.println("Fake Doctors added to the database!");
 //        };
 //    }
+
+
 }

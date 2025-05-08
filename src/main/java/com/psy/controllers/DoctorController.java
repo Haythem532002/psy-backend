@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/doctor")
 @RequiredArgsConstructor
@@ -29,5 +31,24 @@ public class DoctorController {
     @GetMapping("/count")
     ResponseEntity<Integer> getDoctorCount() {
         return ResponseEntity.ok(doctorService.getDoctorCount());
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<Page<Doctor>> getDoctors(
+            @RequestParam("page") int page,
+            @RequestParam("size") int size,
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "price", required = false) Integer price,
+            @RequestParam(value = "gender", required = false) String gender
+    ) {
+
+        System.out.println("Name: " + name);
+        System.out.println("Price: " + price);
+        // Treat empty strings as null
+        price = price == 50 ? null : price;
+        name = (name != null && name.trim().isEmpty()) ? null : name;
+        gender = (gender != null && gender.trim().isEmpty()) ? null : gender;
+
+        return ResponseEntity.ok(doctorService.getDoctors(page, size, name, price, gender));
     }
 }
