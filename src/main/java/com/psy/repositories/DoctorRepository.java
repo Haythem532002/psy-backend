@@ -14,7 +14,6 @@ public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
             "(:name IS NULL OR d.firstname = :name OR d.lastname = :name) AND " +
             "(:price IS NULL OR d.price <= :price) AND " +
             "(:gender IS NULL OR :gender = 'All' OR d.gender = :gender)")
-
     Page<Doctor> searchDoctors(
             @Param("name") String name,
             @Param("price") Integer price,

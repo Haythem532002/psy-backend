@@ -44,6 +44,7 @@ public class DoctorController {
 
         System.out.println("Name: " + name);
         System.out.println("Price: " + price);
+        System.out.println("Gender: " + gender);
         // Treat empty strings as null
         price = price == 50 ? null : price;
         name = (name != null && name.trim().isEmpty()) ? null : name;

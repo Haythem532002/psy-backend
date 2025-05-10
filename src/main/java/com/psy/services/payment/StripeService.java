@@ -32,7 +32,7 @@ public class StripeService {
                                 .setPriceData(
                                         SessionCreateParams.LineItem.PriceData.builder()
                                                 .setCurrency("usd")
-                                                .setUnitAmount((long) appointmentRequest.getPrice()) // e.g. 5000 = $50.00
+                                                .setUnitAmount((long) appointmentRequest.getPrice()*100) // e.g. 5000 = $50.00
                                                 .setProductData(
                                                         SessionCreateParams.LineItem.PriceData.ProductData.builder()
                                                                 .setName("Psychiatric Consultation")
