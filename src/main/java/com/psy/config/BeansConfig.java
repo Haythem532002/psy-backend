@@ -2,7 +2,9 @@ package com.psy.config;
 
 import com.github.javafaker.Faker;
 import com.psy.models.Doctor;
+import com.psy.models.Notification;
 import com.psy.repositories.DoctorRepository;
+import com.psy.repositories.NotificationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -68,6 +70,25 @@ public class BeansConfig {
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
+
+//    @Bean
+//    public CommandLineRunner addNotification(NotificationRepository repository) {
+//        return args -> {
+//            Faker faker = new Faker();
+//
+//            List<Notification> notifications = IntStream.range(0,4)
+//                    .mapToObj(
+//                            i ->
+//                                    Notification.builder()
+//                                            .title(faker.lorem().sentence())
+//                                            .content(faker.lorem().paragraph())
+//                                            .createdAt(faker.date().past(1000, java.util.concurrent.TimeUnit.DAYS).toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDateTime())
+//                                            .build()
+//                    )
+//                    .toList();
+//            repository.saveAll(notifications);
+//        };
+//    }
 
 //    @Bean
 //    public CommandLineRunner loadData(DoctorRepository doctorRepository) {

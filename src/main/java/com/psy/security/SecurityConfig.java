@@ -50,6 +50,8 @@ public class SecurityConfig {
                             .permitAll()
                             .requestMatchers("/api/stripe/webhook")
                             .permitAll()
+                            .requestMatchers("/psy-websocket/**")
+                            .permitAll()
                             .anyRequest()
                             .authenticated();
                 })

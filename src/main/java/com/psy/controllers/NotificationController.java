@@ -4,13 +4,13 @@ import com.psy.models.Notification;
 import com.psy.services.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/notifications")
 public class NotificationController {
 
     private final NotificationService service;
