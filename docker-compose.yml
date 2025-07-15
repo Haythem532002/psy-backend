@@ -1,0 +1,7 @@
+services:
+  psy-backend:
+    image: haythem22/psy-backend
+    container_name: psy-backend
+    ports:
+      - "7090:7090"
+    
