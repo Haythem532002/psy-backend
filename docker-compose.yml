@@ -1,7 +1,33 @@
 services:
   psy-backend:
+    build: .
     image: haythem22/psy-backend
     container_name: psy-backend
     ports:
       - "7090:7090"
+    depends_on: db
+    networks:
+      - app-network
+    
+
+  db:
+    image: postgres
+    container_name: postgres-psy
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data: /var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSYGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    networks:
+      - app-network
+
+
+volumes:
+  pg_data:
+
+networks:
+  app-network:
     
