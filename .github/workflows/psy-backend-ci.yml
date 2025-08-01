@@ -20,7 +20,7 @@ jobs:
       - name: Build the app
         run: |
           chmod +x mvnw
-          mvnw clean install
+          ./mvnw clean install
 
       - name: Login to Docker
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ vars.DOCKER_USERNAME }}" --password-stdin
