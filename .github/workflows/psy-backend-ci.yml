@@ -18,7 +18,7 @@ jobs:
           java-version: '21'       
 
       - name: Build the app
-        run: ./mvnw clean install
+        run: bash mvnw clean install
 
       - name: Login to Docker
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ vars.DOCKER_USERNAME }}" --password-stdin
