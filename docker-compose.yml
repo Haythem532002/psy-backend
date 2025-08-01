@@ -1,6 +1,7 @@
 services:
   psy-backend:
-    build: .
+    build: 
+      context: .
     image: haythem22/psy-backend
     container_name: psy-backend
     ports:
@@ -16,10 +17,10 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - pg_data: /var/lib/postgresql/data
+      - pg_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=${POSTGRES_DB}
-      - POSTGRES_USER=${POSYGRES_USER}
+      - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     networks:
       - app-network
