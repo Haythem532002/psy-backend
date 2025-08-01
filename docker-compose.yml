@@ -6,7 +6,8 @@ services:
     container_name: psy-backend
     ports:
       - "7090:7090"
-    depends_on: db
+    depends_on:
+      - db
     networks:
       - app-network
     
